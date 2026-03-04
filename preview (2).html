@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Earnify Tools</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,sans-serif;
+}
+
+body{
+background:#e9eff6;
+transition:0.3s;
+}
+
+/* DARK MODE */
+
+body.dark{
+background:#0f172a;
+color:white;
+}
+
+/* HEADER */
+
+.header{
+background:white;
+padding:15px 30px;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+body.dark .header{
+background:#1e293b;
+}
+
+.nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+max-width:1200px;
+margin:auto;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:600;
+font-size:18px;
+}
+
+.logo-circle{
+width:34px;
+height:34px;
+border-radius:50%;
+background:linear-gradient(45deg,#7c3aed,#ec4899);
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+}
+
+.menu{
+display:flex;
+gap:20px;
+}
+
+.menu a{
+text-decoration:none;
+color:#333;
+font-size:14px;
+}
+
+body.dark .menu a{
+color:#ddd;
+}
+
+.controls{
+display:flex;
+gap:10px;
+}
+
+.btn{
+padding:7px 14px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+.login-btn{
+background:#7c3aed;
+color:white;
+}
+
+.dark-btn{
+background:#111;
+color:white;
+}
+
+/* SEARCH */
+
+.search-box{
+max-width:600px;
+margin:30px auto;
+display:flex;
+}
+
+.search-box input{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:none;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+/* CARD */
+
+.card{
+background:white;
+border-radius:12px;
+padding:25px;
+box-shadow:0 6px 20px rgba(0,0,0,0.08);
+transition:0.35s;
+transform:scale(1);
+}
+
+body.dark .card{
+background:#1e293b;
+}
+
+.card:hover{
+transform:translateY(-8px) scale(1.03);
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+.icon{
+width:60px;
+height:60px;
+border-radius:50%;
+background:linear-gradient(45deg,#7c3aed,#ec4899);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+color:white;
+margin:auto;
+margin-bottom:15px;
+}
+
+.title{
+text-align:center;
+font-weight:600;
+margin-bottom:6px;
+}
+
+.desc{
+font-size:13px;
+text-align:center;
+opacity:0.7;
+margin-bottom:10px;
+}
+
+.buttons{
+display:flex;
+gap:10px;
+margin-top:10px;
+}
+
+.demo{
+background:#f3f4f6;
+}
+
+.open{
+background:#6366f1;
+color:white;
+}
+
+/* FOOTER */
+
+.footer{
+background:#0f172a;
+color:white;
+margin-top:60px;
+padding:40px 20px;
+text-align:center;
+}
+
+/* LOGIN MODAL */
+
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:none;
+align-items:center;
+justify-content:center;
+}
+
+.modal-box{
+background:white;
+padding:30px;
+border-radius:10px;
+width:300px;
+}
+
+.modal-box input{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="nav">
+
+<div class="logo">
+<div class="logo-circle">E</div>
+<span>Earnify Tools</span>
+</div>
+
+<div class="menu">
+<a href="#">Home</a>
+<a href="#">Pricing</a>
+<a href="#">FAQ</a>
+<a href="#">Affiliate</a>
+</div>
+
+<div class="controls">
+<button class="btn dark-btn" onclick="toggleDark()">🌙</button>
+<button class="btn login-btn" onclick="openLogin()">Login</button>
+</div>
+
+</div>
+
+</header>
+
+<div class="search-box">
+<input type="text" id="search" placeholder="Search tools..." onkeyup="searchTools()">
+</div>
+
+<div class="grid" id="tools">
+
+<div class="card">
+<div class="icon">🎬</div>
+<div class="title">Video Downloader</div>
+<div class="desc">Download Facebook videos easily</div>
+<div class="buttons">
+<button class="btn demo">Demo</button>
+<button class="btn open">Open Tool</button>
+</div>
+</div>
+
+<div class="card">
+<div class="icon">🖼</div>
+<div class="title">Photo Downloader</div>
+<div class="desc">Download album photos instantly</div>
+<div class="buttons">
+<button class="btn demo">Demo</button>
+<button class="btn open">Open Tool</button>
+</div>
+</div>
+
+<div class="card">
+<div class="icon">🚫</div>
+<div class="title">Ad Blocker</div>
+<div class="desc">Remove Facebook ads</div>
+<div class="buttons">
+<button class="btn demo">Demo</button>
+<button class="btn open">Open Tool</button>
+</div>
+</div>
+
+<div class="card">
+<div class="icon">👁</div>
+<div class="title">Unseen Messenger</div>
+<div class="desc">Read messages secretly</div>
+<div class="buttons">
+<button class="btn demo">Demo</button>
+<button class="btn open">Open Tool</button>
+</div>
+</div>
+
+</div>
+
+<footer class="footer">
+© 2026 Earnify Tools — All Rights Reserved
+</footer>
+
+<!-- LOGIN MODAL -->
+
+<div class="modal" id="loginModal">
+<div class="modal-box">
+<h3>Login</h3>
+
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Password">
+
+<button class="btn open" onclick="login()">Login</button>
+
+</div>
+</div>
+
+<script>
+
+/* DARK MODE */
+
+function toggleDark(){
+document.body.classList.toggle("dark")
+}
+
+/* SEARCH */
+
+function searchTools(){
+let input=document.getElementById("search").value.toLowerCase()
+let cards=document.querySelectorAll(".card")
+
+cards.forEach(card=>{
+let title=card.innerText.toLowerCase()
+card.style.display=title.includes(input)?"block":"none"
+})
+}
+
+/* LOGIN MODAL */
+
+function openLogin(){
+document.getElementById("loginModal").style.display="flex"
+}
+
+/* FIREBASE LOGIN DEMO */
+
+function login(){
+alert("Connect Firebase to enable login")
+}
+
+</script>
+
+</body>
+</html>
